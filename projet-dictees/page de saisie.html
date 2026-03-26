@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie - Gestion des Dictées</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="nav-menu">
+        <a href="page d'accueil.html">Accueil</a> | 
+        <a href="page de saisie.html">Saisie</a> | 
+        <a href="page de modification.html">Modifier</a> | 
+        <a href="page visuel.html">Tendances</a>
+    </div>
+    <div class="header">
+        <h1>Saisie</h1>
+    </div>
+
+    <div class="main-container clearfix">
+        <form action="#" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type" name="type">
+                        <option value="dictee">Dictée</option>
+                        <option value="test">Test</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="niveau">Niveau</label>
+                    <select id="niveau" name="niveau">
+                        <option value="a1">A1</option>
+                        <option value="a2">A2</option>
+                        <option value="b1">B1</option>
+                        <option value="b2">B2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Ex: Leçon 1">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date">
+                </div>
+            </div>
+
+            <div class="textarea-group">
+                <textarea id="contenu" name="contenu" placeholder="Saisissez le texte de la dictée ici..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Enregistrer</button>
+        </form>
+    </div>
+
+</body>
+</html>

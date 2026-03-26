@@ -1,0 +1,199 @@
+/* --- Style général--- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Conteneur principal  */
+.main-container {
+    width: 80%;
+    max-width: 900px;
+    background-color: #ffffff;
+    margin: 0 auto; 
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* En-tête */
+.header {
+    width: 80%;
+    max-width: 900px;
+    background-color: #e0e0e0;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* --- Page Accueil --- */
+.welcome-text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.actions-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.action-card {
+    width: 30%;
+    border: 1px solid #aaa;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: #fafafa;
+   
+}
+
+.action-card:hover {
+    background-color: #eeeeee; 
+}
+
+.action-icon {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+/* --- Page Saisie--- */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 22%;
+}
+
+.form-group input, .form-group select {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #999;
+}
+
+.textarea-group textarea {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #0056b3; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.submit-btn:hover {
+    background-color: #004494;
+}
+.clearfix::after { content: ""; clear: both; display: table; }
+
+/* --- Page Modifier--- */
+.filters-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+}
+
+.filter-group label {
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* --- Page Visuel--- */
+.chart-container {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.stats-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.stat-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 25%;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #333;
+}
+
+.stat-card .value {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+}
+/* Navigation */
+.nav-menu {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    padding: 10px;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: #0056b3;
+    margin: 0 15px;
+    font-weight: bold;
+}
+.nav-menu a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier - Gestion des Dictées</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="nav-menu">
+        <a href="page d'accueil.html">Accueil</a> | 
+        <a href="page de saisie.html">Saisie</a> | 
+        <a href="page de modification.html">Modifier</a> | 
+        <a href="page visuel.html">Tendances</a>
+    </div>
+    <div class="header">
+        <h1>Modifier</h1>
+    </div>
+
+    <div class="main-container">
+        <div class="filters-row">
+            <div class="filter-group">
+                <label for="filter-type">Type</label>
+                <select id="filter-type">
+                    <option value="">Tous</option>
+                    <option value="dictee">Dictée</option>
+                    <option value="test">Test</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-niveau">Niveau</label>
+                <select id="filter-niveau">
+                    <option value="">Tous</option>
+                    <option value="a1">A1</option>
+                    <option value="a2">A2</option>
+                    <option value="b1">B1</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-titre">Titre</label>
+                <input type="text" id="filter-titre" placeholder="Rechercher...">
+            </div>
+            <div class="filter-group">
+                <label for="filter-date">Date</label>
+                <input type="date" id="filter-date">
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Type</th>
+                    <th>Niveau</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dictation-list">
+                <tr>
+                    <td class="item-title">Zèbre et la nature</td>
+                    <td>Dictée</td>
+                    <td>B1</td>
+                    <td>2023-10-12</td>
+                    <td><button class="edit-btn">Modifier</button></td>
+                </tr>
+                <tr>
+                    <td class="item-title">Animaux sauvages</td>
+                    <td>Test</td>
