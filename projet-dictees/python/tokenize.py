@@ -3,49 +3,56 @@ import re
 
 # Fonction de tokénisation 
 def tokenize(text):
+	if not text: return[]
 	toks = re.findall(r"[\w\-]+'?",text)
 	return toks
 
 # Connection à la bdd
 mydb = mysql.connector.connect(host = "localhost",database = "gr4m1IDL",user = "m2dilipem", password = "m2dilipem")
 	
-# Requête SQL
+
 mycursor = mydb.cursor()
 	
-		# - Dictées version prof														
-mycursor.execute("SELECT contenu prof, id_dict FROM version_prof WHERE type != 'mot' ")
+		# - Dictées version prof	
+query_prof = """
+				SELECT id_dict, contenu_prof 
+				FROM version_prof p 
+				WHERE p.type != 'mot'
+			"""													
+mycursor.execute(query_prof)
 									
-contenu_prof = mycursor.fetchall()
+rows_prof = mycursor.fetchall()
 
-		# - Dictées version élève
-mycursor.execute("SELECT e.contenu_eleve FROM version_eleve e JOIN vversion_prof p ON p.id_dict = e.dict_id WHERE type != 'mot' ") 
-									
-contenu_eleve = mycursor.fetchall()
-	
-# Tokénisation des dictées dans leurs deux versions
-toks_prof = []
-toks_eleve = []
-
-for dict in contenu_prof:
-	toks_prof.append(tokenize(contenu_prof))
-	
-for dict in contenu_eleve:
-	toks_eleve.append(tokenize(contenu_eleve))
-
-# Insertion des dictées tokénisées dans la bdd
-for tok in toks_prof:
-	sql = "INSERT INTO toks_prof (tok_prof) VALUES (%s)"
-	val = (tok,)
-	
-	mycursor.execute(sql,val)
+for row in rows_prof:
+	id_dict = row[0]
+	content_prof = row[1]
+	tokens = tokenize(content_prof)
+	for token in tokens:
+		sql = "INSERT INTO toks_prof (id_dict,tok_prof) VALUES (%s,%s)"
+		val = (id_dict, token)
+		mycursor.execute(sql,val)
 	mydb.commit()
 
-for tok in toks_eleve:
-	sql = "INSERT INTO toks_eleve (tok_eleve) VALUES (%s)"
-	val = (tok,)
+		# - Dictées version élève
+query_eleve = """
+				SELECT e.dict_fk, e.contenu_eleve 
+				FROM version_eleve e 
+				JOIN version_prof p ON p.id_dict = e.dict_fk 
+				WHERE p.type != 'mot'
+			"""
+mycursor.execute(query_eleve) 
+									
+rows_eleve= mycursor.fetchall()
 
-	mycursor.execute(sql, val)
-	mydb.commit
+for row in rows_eleve:
+	id_dict_origine = row[0]
+	content_eleve = row[1]
+	tokens = tokenize(content_eleve)
 	
+	for token in tokens:
+		sql = "INSERT INTO toks_eleve (id_dict,tok_eleve) VALUES (%s,%s)"
+		val = (id_dict_origine,token)
+		mycursor.execute(sql,val)
+	mydb.commit()	
 
 mydb.close()
