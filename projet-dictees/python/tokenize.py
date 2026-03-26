@@ -27,9 +27,9 @@ for row in rows_prof:
 	id_dict = row[0]
 	content_prof = row[1]
 	tokens = tokenize(content_prof)
-	for token in tokens:
-		sql = "INSERT INTO toks_prof (id_dict,tok_prof) VALUES (%s,%s)"
-		val = (id_dict, token)
+	for i, token in enumerate(tokens, start=1):
+		sql = "INSERT INTO toks_prof (id_dict,tok_prof, position_prof) VALUES (%s,%s,%s)"
+		val = (id_dict, token, i)
 		mycursor.execute(sql,val)
 	mydb.commit()
 
@@ -49,9 +49,9 @@ for row in rows_eleve:
 	content_eleve = row[1]
 	tokens = tokenize(content_eleve)
 	
-	for token in tokens:
-		sql = "INSERT INTO toks_eleve (id_dict,tok_eleve) VALUES (%s,%s)"
-		val = (id_dict_origine,token)
+	for i, token in enumerate(tokens, start=1):
+		sql = "INSERT INTO toks_eleve (id_dict,tok_eleve, position_eleve) VALUES (%s,%s,%s)"
+		val = (id_dict_origine,token,i)
 		mycursor.execute(sql,val)
 	mydb.commit()	
 
