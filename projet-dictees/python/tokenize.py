@@ -17,7 +17,6 @@ mycursor = mydb.cursor()
 query_prof = """
 				SELECT id_dict, contenu_prof 
 				FROM version_prof p 
-				WHERE p.type != 'mot'
 			"""													
 mycursor.execute(query_prof)
 									
@@ -38,7 +37,6 @@ query_eleve = """
 				SELECT e.dict_fk, e.contenu_eleve 
 				FROM version_eleve e 
 				JOIN version_prof p ON p.id_dict = e.dict_fk 
-				WHERE p.type != 'mot'
 			"""
 mycursor.execute(query_eleve) 
 									
