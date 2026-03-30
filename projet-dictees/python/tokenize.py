@@ -1,4 +1,5 @@
 import mysql.connector
+from mysql.connector import connect, Error
 import re
 
 # Fonction de tokénisation 
@@ -8,9 +9,13 @@ def tokenize(text):
 	return toks
 
 # Connection à la bdd
-mydb = mysql.connector.connect(host = "localhost",database = "gr4m1IDL",user = "m2dilipem", password = "m2dilipem")
-	
+try:
+	mydb = mysql.connector.connect(host = "localhost",database = "gr4m1IDL",user = "m2dilipem", password = "m2dilipem")
+	print("Connexion réussie")
+except Error as e:
+	print(f"Erreur : {e}")
 
+	
 mycursor = mydb.cursor()
 	
 		# - Dictées version prof	
