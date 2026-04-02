@@ -21,7 +21,7 @@ try {
     $query_prof = "SELECT id_dict, contenu_prof FROM version_prof";
     $stmt_prof_select = $mydb->query($query_prof);
     
-    $stmt_prof_insert = $mydb->prepare("INSERT INTO toks_prof (id_dict, tok_prof, position_prof) VALUES (?, ?, ?)");
+    $stmt_prof_insert = $mydb->prepare("INSERT INTO toks_prof (id_dict_fk, tok_prof, position_prof) VALUES (?, ?, ?)");
 
     $mydb->beginTransaction();
     
@@ -46,7 +46,7 @@ try {
                     JOIN version_prof p ON p.id_dict = e.dict_fk";
     $stmt_eleve_select = $mydb->query($query_eleve);
     
-    $stmt_eleve_insert = $mydb->prepare("INSERT INTO toks_eleve (id_dict, tok_eleve, position_eleve) VALUES (?, ?, ?)");
+    $stmt_eleve_insert = $mydb->prepare("INSERT INTO toks_eleve (id_dict_fk, tok_eleve, position_eleve) VALUES (?, ?, ?)");
 
     $mydb->beginTransaction(); 
     
