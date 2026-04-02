@@ -20,6 +20,8 @@ try {
     $stmt_prof_select = $mydb->query($query_prof);
     $stmt_prof_insert = $mydb->prepare("INSERT INTO toks_prof (id_dict_fk, tok_prof, position_prof) VALUES (?, ?, ?)");
 
+    $stmt_mark_prof = $mydb->prepare("UPDATE version_prof SET is_tokenized = 1 WHERE id_dict = ?");
+
     $mydb->beginTransaction();
     while ($row = $stmt_prof_select->fetch()) {
         $tokens = tokenize($row['contenu_prof']);
@@ -28,15 +30,18 @@ try {
             $stmt_prof_insert->execute([$row['id_dict'], $token, $i]);
             $i++;
         }
+        $stmt_mark_prof->execute([$row['id_dict']]);
     }
     $mydb->commit(); 
     echo "Tokens profs insérés.\n";
 
 
-    // Tokénisation dictée élève
+    // Tokénisation dictées élève 
     $query_eleve = "SELECT e.dict_fk, e.contenu_eleve FROM version_eleve e";
     $stmt_eleve_select = $mydb->query($query_eleve);
     $stmt_eleve_insert = $mydb->prepare("INSERT INTO toks_eleve (id_dict_fk, tok_eleve, position_eleve) VALUES (?, ?, ?)");
+    
+    $stmt_mark_eleve = $mydb->prepare("UPDATE version_eleve SET is_tokenized_e = 1 WHERE dict_fk = ?");
 
     $mydb->beginTransaction(); 
     while ($row = $stmt_eleve_select->fetch()) {
@@ -46,14 +51,14 @@ try {
             $stmt_eleve_insert->execute([$row['dict_fk'], $token, $i]);
             $i++;
         }
+        $stmt_mark_eleve->execute([$row['dict_fk']]);
     }
     $mydb->commit(); 
     echo "Tokens élèves insérés.\n";
 
 
-    // Comparaison des tokens et calcul du score 
+    // Comparaison des tokens élèves vs. prof
     echo "Lancement de la comparaison globale...\n";
-
     $sql_compare = "
         UPDATE toks_eleve e
         INNER JOIN toks_prof p ON e.id_dict_fk = p.id_dict_fk 
@@ -61,20 +66,22 @@ try {
         SET e.est_correct = 1
         WHERE e.tok_eleve = p.tok_prof
     ";
-
     $count = $mydb->exec($sql_compare);
+    echo "Comparaison terminée. $count mots marqués comme corrects.\n";
 
-    echo "Tokénisation et comparaison terminées. $count mots marqués comme corrects.\n";
 
+    // Calcul du score sur 20
     $sql_score = "
-                UPDATE version_eleve v
-                SET v.score_sur_20 = (
-                FROM toks_prof p 
-                LEFT JOIN toks_eleve e ON p.id_dict_fk = e.id_dict_fk AND p.position_prof = e.position_eleve
-                WHERE p.id_dict_fk = v.dict_fk"
-
-    $mydb->exec($sql_score)
-
+        UPDATE version_eleve v
+        SET v.score_sur_20 = (
+            SELECT (SUM(CASE WHEN e.est_correct = 1 THEN 1 ELSE 0 END) / COUNT(p.id_toks)) * 20
+            FROM toks_prof p
+            LEFT JOIN toks_eleve e ON p.id_dict_fk = e.id_dict_fk AND p.position_prof = e.position_eleve
+            WHERE p.id_dict_fk = v.dict_fk
+        )
+    ";
+    $mydb->exec($sql_score);
+    echo "Scores mis à jour dans version_eleve.\n";
 
 } catch (PDOException $e) {
     if (isset($mydb) && $mydb->inTransaction()) $mydb->rollBack();
