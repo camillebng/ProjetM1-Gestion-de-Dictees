@@ -65,4 +65,7 @@
                     <td>  <?php echo date('d/m/Y', strtotime($dictee['date_creation'])); ?>  </td>
                     <td><a href="page detail modification.html" class="edit-btn" style="text-decoration: none; color: inherit;">Modifier</a></td>
                 </tr>
-                <tr>
+            </tbody>
+        </table>
+</body>
+</html>
