@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="nav-menu">
-        <a href="page d'accueil.html">Accueil</a> | 
-        <a href="page de saisie.html">Saisie</a> | 
-        <a href="page de modification.html">Modifier</a> | 
-        <a href="page visuel.html">Tendances</a>
+        <a href="index.html">Accueil</a> | 
+        <a href="saisie.html">Saisie</a> | 
+        <a href="modification.php">Modifier</a> | 
+        <a href="visualisation.html">Tendances</a>
     </div>
     <div class="header">
         <h1>Modifier</h1>
