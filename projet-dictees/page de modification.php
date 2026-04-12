@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include 'liste_dict.php'; ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -66,5 +66,3 @@
                     <td><a href="page detail modification.html" class="edit-btn" style="text-decoration: none; color: inherit;">Modifier</a></td>
                 </tr>
                 <tr>
-                    <td class="item-title">Animaux sauvages</td>
-                    <td>Test</td>
