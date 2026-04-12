@@ -57,15 +57,21 @@
                 </tr>
             </thead>
             <tbody id="dictation-list">
-                <?php foreach ($dictees as $dictee): ?>
-                <tr>
-                    <td><strong>  <?php echo htmlspecialchars($dictee['titre']);?>  </strong></td>
-                    <td>  <?php echo htmlspecialchars($dictee['type']); ?>  </td>
-                    <td>  <?php echo htmlspecialchars($dictee['niveau']); ?>  </td>
-                    <td>  <?php echo date('d/m/Y', strtotime($dictee['date_creation'])); ?>  </td>
-                    <td><a href="page detail modification.html" class="edit-btn" style="text-decoration: none; color: inherit;">Modifier</a></td>
-                </tr>
-            </tbody>
+                <?php if (!empty($dictees)): ?>
+                    <?php foreach ($dictees as $dictee): ?>
+                    <tr>
+                        <td><strong><?php echo htmlspecialchars($dictee['titre']); ?></strong></td>
+                        <td><?php echo htmlspecialchars($dictee['type']); ?></td>
+                        <td><?php echo htmlspecialchars($dictee['niveau']); ?></td>
+                        <td><?php echo date('d/m/Y', strtotime($dictee['date'])); ?></td>
+                        <td>
+                            <a href="edit_detail.php?id=<?php echo $dictee['id_dict']; ?>" class="edit-btn">Modifier</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?> <?php else: ?>
+                    <tr><td colspan="5">Aucune dictée trouvée.</td></tr>
+                <?php endif; ?> </tbody>
         </table>
+    </div> 
 </body>
 </html>
