@@ -62,7 +62,7 @@
                     <td><strong>  <?php echo htmlspecialchars($dictee['titre']);?>  </strong></td>
                     <td>  <?php echo htmlspecialchars($dictee['type']); ?>  </td>
                     <td>  <?php echo htmlspecialchars($dictee['niveau']); ?>  </td>
-                    <td>  <?php echo htmlspecialchars($dictee['date']); ?>  </td>
+                    <td>  <?php echo date('d/m/Y', strtotime($dictee['date_creation'])); ?>  </td>
                     <td><a href="page detail modification.html" class="edit-btn" style="text-decoration: none; color: inherit;">Modifier</a></td>
                 </tr>
                 <tr>
