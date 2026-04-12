@@ -23,8 +23,9 @@
                 <label for="filter-type">Type</label>
                 <select id="filter-type">
                     <option value="">Tous</option>
-                    <option value="dictee">Dictée</option>
-                    <option value="test">Test</option>
+                    <option value="mot">Mots</option>
+                    <option value="phrase">Phrases</option>
+                    <option value="texte">Texte</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -59,9 +60,14 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="liste-dictees">
-                <?php foreach ($dictees as $dictee): ?>
-                <tr class="row-<?php echo strtolower($dictee['version']); ?>">
+           <tbody id="liste-dictees">
+            <?php foreach ($dictees as $dictee): ?>
+                <tr class="dictees-row row-<?php echo strtolower($dictee['version']); ?>" 
+                    data-type="<?php echo htmlspecialchars($dictee['type']); ?>" 
+                    data-niveau="<?php echo htmlspecialchars($dictee['niveau']); ?>"
+                    data-titre="<?php echo strtolower(htmlspecialchars($dictee['titre'])); ?>"
+                    data-version="<?php echo htmlspecialchars($dictee['version']); ?>">
+                    
                     <td><strong><?php echo htmlspecialchars($dictee['titre']); ?></strong></td>
                     <td><?php echo htmlspecialchars($dictee['type']); ?></td>
                     <td><?php echo htmlspecialchars($dictee['niveau']); ?></td>
@@ -81,9 +87,10 @@
                         <a href="edit.php?id=<?php echo $dictee['id_dict']; ?>" class="edit-btn">Modifier</a>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div> 
+    <script src="js/listeModif.js" defer></script>
 </body>
 </html>
