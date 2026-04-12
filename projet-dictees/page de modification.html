@@ -57,11 +57,12 @@
                 </tr>
             </thead>
             <tbody id="dictation-list">
+                <?php foreach ($dictees as $dictee): ?>
                 <tr>
-                    <td class="item-title">Zèbre et la nature</td>
-                    <td>Dictée</td>
-                    <td>B1</td>
-                    <td>2023-10-12</td>
+                    <td><strong>  <?php echo htmlspecialchars($dictee['titre']);?>  </strong></td>
+                    <td>  <?php echo htmlspecialchars($dictee['type']); ?>  </td>
+                    <td>  <?php echo htmlspecialchars($dictee['niveau']); ?>  </td>
+                    <td>  <?php echo htmlspecialchars($dictee['date']); ?>  </td>
                     <td><a href="page detail modification.html" class="edit-btn" style="text-decoration: none; color: inherit;">Modifier</a></td>
                 </tr>
                 <tr>
