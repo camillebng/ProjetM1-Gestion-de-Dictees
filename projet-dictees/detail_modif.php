@@ -24,17 +24,19 @@
                 <div class="form-group">
                     <label for="type">Type</label>
                     <select id="type" name="type">
-                        <option value="dictee">Dictée</option>
-                        <option value="test">Test</option>
+                        <option value="mot">Mots</option>
+                        <option value="phrase">Phrases</option>
+                        <option value="texte">Texte</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="niveau">Niveau</label>
                     <select id="niveau" name="niveau">
-                        <option value="a1">A1</option>
-                        <option value="a2">A2</option>
-                        <option value="b1">B1</option>
-                        <option value="b2">B2</option>
+                    <option value="cp">CP</option>
+                    <option value="ce1">CE1</option>
+                    <option value="ce2">CE2</option>
+                    <option value="cm1">CM1</option>
+                    <option value="cm2">CM2</option>
                     </select>
                 </div>
                 <div class="form-group">

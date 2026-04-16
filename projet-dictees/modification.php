@@ -84,7 +84,7 @@
                         ?>
                     </td>
                     <td>
-                        <a href="edit.php?id=<?php echo $dictee['id_dict']; ?>" class="edit-btn">Modifier</a>
+                        <a href="detail_modif.php?id=<?php echo $dictee['id_dict']; ?>" class="edit-btn">Modifier</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
