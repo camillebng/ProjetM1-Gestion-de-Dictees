@@ -140,11 +140,21 @@ th {
     margin-right: 5px;
 }
 
-.edit-btn {
+.btn-reset, .edit-btn {
     background-color: #e9ecef;
     border: 1px solid #ced4da;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5%;
+    color: #0056b3;
+}
+
+.btn-reset:hover, .edit-btn:hover {
+    background-color: #ddd;
+}
+
+.btn-reset:visited, .edit-btn:visited {
+    color: #0056b3;
 }
 
 /* --- Page Visuel--- */
