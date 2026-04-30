@@ -2,8 +2,8 @@
 // Connexion à la base de données
 $host = 'localhost';
 $dbname = 'gr4m1IDL';
-$username = 'm2dilipem';
-$password = 'm2dilipem';
+$username = 'root';
+$password = '';
 
 $connexion = new mysqli($host, $username, $password, $dbname);
 
@@ -55,7 +55,7 @@ $connexion->close();
         <h1>Modifier la Dictée</h1>
     </div>
     <div class="main-container clearfix">
-        <form action="php/modifier_dictée.php" method="POST">
+        <form action="php/modifier_dictee.php" method="POST">
             <!-- Champ caché pour l'ID de la dictée -->
             <input type="hidden" name="id_dict" value="<?php echo htmlspecialchars($dictee['id_dict']); ?>">
 

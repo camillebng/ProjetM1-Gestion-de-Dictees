@@ -7,12 +7,12 @@ function tokenize($text) {
 }
 
 try {
-    $dsn = "mysql:host=localhost;dbname=gr4m1IDL;charset=utf8mb4";
+    $dsn = "mysql:host=localhost;dbname=gr4m1idl;charset=utf8mb4";
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, 
     ];
-    $mydb = new PDO($dsn, "m2dilipem", "m2dilipem", $options);
+    $mydb = new PDO($dsn, "root", "", $options);
     echo "Connexion réussie\n";
 
     // Tokénisation dictée prof

@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$dbname = 'gr4m1IDL';
-$username = 'm2dilipem';
-$password = 'm2dilipem';
+$dbname = 'gr4m1idl';
+$username = 'root';
+$password = '';
 
 
 try{
