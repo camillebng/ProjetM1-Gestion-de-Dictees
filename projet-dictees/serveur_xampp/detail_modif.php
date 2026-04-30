@@ -1,15 +1,6 @@
 <?php
 // Connexion à la base de données
-$host = 'localhost';
-$dbname = 'gr4m1IDL';
-$username = 'root';
-$password = '';
-
-$connexion = new mysqli($host, $username, $password, $dbname);
-
-if ($connexion->connect_error) {
-    die("Échec de la connexion : " . $connexion->connect_error);
-}
+require_once 'php/config.php';
 
 // Récupère l'ID de la dictée depuis l'URL
 $id_dict = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -19,21 +10,15 @@ if ($id_dict <= 0) {
 
 // Requête pour récupérer la dictée
 $requete = "SELECT * FROM version_prof WHERE id_dict = ?";
-$statement = $connexion->prepare($requete);
-$statement->bind_param("i", $id_dict);
-$statement->execute();
-$resultat = $statement->get_result();
+$statement = $pdo->prepare($requete);
+$statement->execute([$id_dict]);
+$dictee = $statement->fetch(PDO::FETCH_ASSOC);
 
-if ($resultat->num_rows === 0) {
+if (!$dictee) {
     die("Dictée non trouvée.");
 }
 
-// Récupère les données de la dictée
-$dictee = $resultat->fetch_assoc();
 
-// Ferme la connexion
-$statement->close();
-$connexion->close();
 ?>
 
 <!DOCTYPE html>
@@ -81,10 +66,6 @@ $connexion->close();
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" value="<?php echo htmlspecialchars($dictee['titre']); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($dictee['date']); ?>">
                 </div>
             </div>
             <div class="textarea-group">

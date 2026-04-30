@@ -1,16 +1,7 @@
 <?php
-$host = 'localhost';
-$dbname = 'gr4m1idl';
-$username = 'root';
-$password = '';
 
+require_once 'config.php';
 
-try{
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",$username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
 
 $sql_query = $pdo->query("  SELECT p.id_dict, p.titre, p.niveau, p.type, 'Prof' AS version, e.`date` AS date_tri
                             FROM version_prof p, version_eleve e
