@@ -99,6 +99,6 @@
             </tbody>
         </table>
     </div> 
-    <script src="js/filtres.js" defer></script>
+    <script src="assets/js/filtres.js" defer></script>
 </body>
 </html>
