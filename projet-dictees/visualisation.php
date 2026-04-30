@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="nav-menu">
-        <a href="index.html">Accueil</a> | 
+        <a href="index.php">Accueil</a> | 
         <a href="saisie.html">Saisie</a> | 
         <a href="modification.php">Modifier</a> | 
-        <a href="visualisation.html">Tendances</a>
+        <a href="visualisation.php">Tendances</a>
     </div>
 
     <div class="header">
