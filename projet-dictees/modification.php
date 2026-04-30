@@ -16,44 +16,44 @@
     <div class="header">
         <h1>Modifier</h1>
     </div>
+    <!-- Succès de MAJ -->
+    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <div class="success-message">
+             La dictée a été mise à jour avec succès !
+        </div>
+    <?php endif; ?>
 
-    <form method="GET" action="modifier.php">
-        <div class="main-container">
-            <div class="filters-row">
-                <div class="filter-group">
-                    <label for="filter-type">Type</label>
-                    <select id="filter-type" name="filter-type">
-                        <option value="">Tous</option>
-                        <option value="mot">Mots</option>
-                        <option value="phrase">Phrases</option>
-                        <option value="texte">Texte</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filter-niveau">Niveau</label>
-                    <select id="filter-niveau" name="filter-niveau">
-                        <option value="">Tous</option>
-                        <option value="cp">CP</option>
-                        <option value="ce1">CE1</option>
-                        <option value="ce2">CE2</option>
-                        <option value="cm1">CM1</option>
-                        <option value="cm2">CM2</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filter-titre">Titre</label>
-                    <input type="text" id="filter-titre" placeholder="Rechercher...">
-                </div>
-                <div class="filter-group">
-                    <label for="filter-date">Date</label>
-                    <input type="date" id="filter-date" name="date_filter" 
-                        value="<?php echo isset($_GET['date_filter']) ? $_GET['date_filter'] : ''; ?>">
-                </div>
-                <div class="filter-group">
-                    <a href="modification.php" class="btn-reset">Réinitialiser</a>
-                </div>
+    <div class="main-container">
+        <div class="filters-row">
+            <div class="filter-group">
+                <label for="filter-type">Type</label>
+                <select id="filter-type">
+                    <option value="">Tous</option>
+                    <option value="mot">Mots</option>
+                    <option value="phrase">Phrases</option>
+                    <option value="texte">Texte</option>
+                </select>
             </div>
-    </form>
+            <div class="filter-group">
+                <label for="filter-niveau">Niveau</label>
+                <select id="filter-niveau">
+                    <option value="">Tous</option>
+                    <option value="cp">CP</option>
+                    <option value="ce1">CE1</option>
+                    <option value="ce2">CE2</option>
+                    <option value="cm1">CM1</option>
+                    <option value="cm2">CM2</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-titre">Titre</label>
+                <input type="text" id="filter-titre" placeholder="Rechercher...">
+            </div>
+            <div class="filter-group">
+                <label for="filter-date">Date</label>
+                <input type="date" id="filter-date">
+            </div>
+        </div>
 
         <table>
             <thead>
@@ -72,8 +72,7 @@
                     data-type="<?php echo htmlspecialchars($dictee['type']); ?>" 
                     data-niveau="<?php echo htmlspecialchars($dictee['niveau']); ?>"
                     data-titre="<?php echo strtolower(htmlspecialchars($dictee['titre'])); ?>"
-                    data-version="<?php echo htmlspecialchars($dictee['version']); ?>"
-                    data-date="<?php echo $dictee['date_tri'] ? substr($dictee['date_tri'], 0, 10) : ''; ?>">
+                    data-version="<?php echo htmlspecialchars($dictee['version']); ?>">
                     
                     <td><strong><?php echo htmlspecialchars($dictee['titre']); ?></strong></td>
                     <td><?php echo htmlspecialchars($dictee['type']); ?></td>
@@ -98,6 +97,6 @@
             </tbody>
         </table>
     </div> 
-    <script src="js/filtres.js" defer></script>
+    <script src="js/listeModif.js" defer></script>
 </body>
 </html>
