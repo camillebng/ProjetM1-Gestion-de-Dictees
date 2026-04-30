@@ -67,12 +67,14 @@
                 </tr>
             </thead>
            <tbody id="liste-dictees">
-            <?php foreach ($dictees as $dictee): ?>
-                <tr class="dictees-row row-<?php echo strtolower($dictee['version']); ?>" 
-                    data-type="<?php echo htmlspecialchars($dictee['type']); ?>" 
-                    data-niveau="<?php echo htmlspecialchars($dictee['niveau']); ?>"
-                    data-titre="<?php echo strtolower(htmlspecialchars($dictee['titre'])); ?>"
-                    data-version="<?php echo htmlspecialchars($dictee['version']); ?>">
+
+                <?php foreach ($dictees as $dictee): ?>
+                    <tr class="dictees-row row-<?php echo strtolower($dictee['version']); ?>" 
+                        data-type="<?php echo htmlspecialchars($dictee['type']); ?>" 
+                        data-niveau="<?php echo htmlspecialchars($dictee['niveau']); ?>"
+                        data-titre="<?php echo strtolower(htmlspecialchars($dictee['titre'])); ?>"
+                        data-version="<?php echo htmlspecialchars($dictee['version']); ?>"
+                        data-date="<?php echo $dictee['date_tri']; ?>"> <!-- Ajout de cet attribut -->
                     
                     <td><strong><?php echo htmlspecialchars($dictee['titre']); ?></strong></td>
                     <td><?php echo htmlspecialchars($dictee['type']); ?></td>
@@ -97,6 +99,6 @@
             </tbody>
         </table>
     </div> 
-    <script src="js/listeModif.js" defer></script>
+    <script src="js/filtres.js" defer></script>
 </body>
 </html>

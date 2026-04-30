@@ -12,8 +12,8 @@ try{
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-$sql_query = $pdo->query("  SELECT p.id_dict, p.titre, p.niveau, p.type, 'Prof' AS version, p.`date` AS date_tri
-                            FROM version_prof p 
+$sql_query = $pdo->query("  SELECT p.id_dict, p.titre, p.niveau, p.type, 'Prof' AS version, e.`date` AS date_tri
+                            FROM version_prof p, version_eleve e
 
                             UNION ALL
 
