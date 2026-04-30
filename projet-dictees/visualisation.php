@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="type">Type</label>
                     <select id="type" name="type">
-                        <option value="">Tous</option>
+                        <option value="">Tous les types</option>
                         <option value="texte">Texte</option>
                         <option value="phrase">Phrases</option>
                         <option value="mot">Mots</option>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="niveau">Niveau</label>
                     <select id="niveau" name="niveau">
-                        <option value="">Tous</option>
+                        <option value="">Tous les niveaux</option>
                         <option value="cp">CP</option>
                         <option value="ce1">CE1</option>
                         <option value="ce2">CE2</option>
@@ -44,7 +44,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="date">Date</label>
+                    <label for="date">Filtrer par date</label>
                     <input type="date" id="date" name="date">
                 </div>
             </div>
@@ -53,24 +53,24 @@
 
     <!-- Zone du graphique -->
     <div class="main-container">
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw; margin: auto;">
+        <div class="chart-wrapper">
             <canvas id="trendChart"></canvas>
         </div>
-    </div>
 
-    <!-- Zone des statistiques  -->
-    <div class="stats-summary">
-        <div class="stat-card">
-            <h3>Moyenne Générale</h3>
-            <div class="value" id="stat-moyenne">-</div>
-        </div>
-        <div class="stat-card">
-            <h3>Dictées Réalisées</h3>
-            <div class="value" id="stat-count">-</div>
-        </div>
-        <div class="stat-card">
-            <h3>Note Max / Min</h3>
-            <div class="value" id="stat-range">-</div>
+        <!-- Zone des statistiques -->
+        <div class="stats-summary">
+            <div class="stat-card">
+                <h3>Moyenne Générale</h3>
+                <div class="value" id="stat-moyenne">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Dictées Réalisées</h3>
+                <div class="value" id="stat-count">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Note Max / Min</h3>
+                <div class="value" id="stat-range">-</div>
+            </div>
         </div>
     </div>
 

@@ -8,10 +8,10 @@ $niveau = $_GET['niveau'] ?? '';
 $date = $_GET['date'] ?? '';
 
 try {
-    // Requête avec filtres
+    // Requête avec filtres 
     $sql = "SELECT 
                 AVG(v.score_sur_20) as moyenne, 
-                COUNT(v.id_eleve) as nb_dictées,
+                COUNT(v.id_dict_eleve) as nb_dictées,
                 MAX(v.score_sur_20) as note_max,
                 MIN(v.score_sur_20) as note_min
             FROM version_eleve v
@@ -29,11 +29,17 @@ try {
 
     // 10 dernières données pour le graphique
     $sql_chart = "SELECT v.date, AVG(v.score_sur_20) as moy_jour 
-                  FROM version_eleve v 
+                  FROM version_eleve v
                   JOIN version_prof p ON v.dict_fk = p.id_dict
                   WHERE 1=1";
-    // (Ajouter les mêmes filtres ici si nécessaire)
+                  
+    
+    if (!empty($type)) { $sql_chart .= " AND p.type = ?"; }
+    if (!empty($niveau)) { $sql_chart .= " AND p.niveau = ?"; }
+    if (!empty($date)) { $sql_chart .= " AND v.date = ?"; }
+    
     $sql_chart .= " GROUP BY v.date ORDER BY v.date ASC LIMIT 10";
+    
     $stmt_chart = $pdo->prepare($sql_chart);
     $stmt_chart->execute($params);
     $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
@@ -46,3 +52,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
+?>

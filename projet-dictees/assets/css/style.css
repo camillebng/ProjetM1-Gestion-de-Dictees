@@ -33,6 +33,24 @@ body {
     font-size: 24px;
 }
 
+/* --- Navigation --- */
+.nav-menu {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    padding: 10px;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: #0056b3;
+    margin: 0 15px;
+    font-weight: bold;
+}
+.nav-menu a:hover {
+    text-decoration: underline;
+}
+
 /* --- Page Accueil --- */
 .welcome-text {
     text-align: center;
@@ -51,7 +69,6 @@ body {
     padding: 20px 10px;
     text-align: center;
     background-color: #fafafa;
-   
 }
 
 .action-card:hover {
@@ -81,7 +98,13 @@ th {
     background-color: #f0f0f0;
 }
 
-/* --- Page Saisie--- */
+/* --- Formulaires (Saisie & Filtres) --- */
+.form-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+}
+
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -91,13 +114,19 @@ th {
 .form-group {
     display: flex;
     flex-direction: column;
-    width: 22%;
+    width: 30%; /* Ajusté pour laisser de la place aux 3 filtres */
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .form-group input, .form-group select {
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #999;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .textarea-group textarea {
@@ -106,6 +135,7 @@ th {
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
 }
 
 .submit-btn {
@@ -113,6 +143,7 @@ th {
     color: white;
     padding: 10px 20px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
     float: right;
 }
@@ -120,86 +151,57 @@ th {
 .submit-btn:hover {
     background-color: #004494;
 }
-.clearfix::after { content: ""; clear: both; display: table; }
 
-/* --- Page Modifier--- */
-.filters-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
-}
-
-.filter-group {
-    display: flex;
-    align-items: center;
-}
-
-.filter-group label {
-    margin-right: 5px;
-}
-
-.edit-btn {
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-.success-message {
-    background-color: #d4edda;
-    color: #23c549;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #c3e6cb;
-}
-/* --- Page Visuel--- */
-.chart-container {
-    height: 400px;
+/* --- Page Visualisation (Tendances) --- */
+.chart-wrapper {
+    position: relative;
+    height: 45vh; /* Hauteur relative à l'écran */
     width: 100%;
     margin-bottom: 30px;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .stats-summary {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
     gap: 15px;
 }
 
 .stat-card {
     flex: 1;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 20px;
     text-align: center;
-    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .stat-card h3 {
+    margin: 0 0 10px 0;
     font-size: 14px;
-    color: #333;
+    color: #555;
+    text-transform: uppercase;
 }
 
 .stat-card .value {
-    font-size: 18px;
-    color: #666;
-    font-style: italic;
-}
-/* Navigation */
-.nav-menu {
-    width: 80%;
-    max-width: 900px;
-    margin: 0 auto 10px auto;
-    text-align: center;
-    padding: 10px;
-}
-.nav-menu a {
-    text-decoration: none;
-    color: #0056b3;
-    margin: 0 15px;
+    font-size: 24px;
     font-weight: bold;
+    color: #0056b3;
 }
-.nav-menu a:hover {
-    text-decoration: underline;
+
+/* --- Utilitaires --- */
+.clearfix::after { content: ""; clear: both; display: table; }
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
 }
