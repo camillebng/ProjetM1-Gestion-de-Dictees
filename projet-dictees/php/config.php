@@ -10,7 +10,7 @@ $password = '';
 
 // Serveur I3L
 // $host = 'localhost';
-// $dbname = 'gr4m1idl'; 
+// $dbname = 'gr4m1IDL'; 
 // $username = 'm2dilipem';
 // $password = 'm2dilipem';
 
