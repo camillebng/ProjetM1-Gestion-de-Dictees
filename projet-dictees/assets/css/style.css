@@ -86,6 +86,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    background-color: #fff;
 }
 
 th, td {
@@ -98,37 +99,51 @@ th {
     background-color: #f0f0f0;
 }
 
-/* --- Formulaires (Saisie & Filtres) --- */
+/* Alternance de couleurs pour les lignes */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* --- Formulaires & Filtres --- */
 .form-container {
     width: 80%;
     max-width: 900px;
     margin: 0 auto 20px auto;
 }
 
-.form-row {
+/* Barre de filtres horizontale (Page Modifier) */
+.filters-row {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    align-items: flex-end; 
 }
 
-.form-group {
+/* Groupe individuel (Label + Input) */
+.filter-group {
     display: flex;
     flex-direction: column;
-    width: 30%; /* Ajusté pour laisser de la place aux 3 filtres */
+    flex: 1;
+    min-width: 110px;
 }
 
-.form-group label {
+.filter-group label {
     font-weight: bold;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-.form-group input, .form-group select {
-    padding: 8px;
+.filter-group input, .filter-group select {
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+/* Style spécifique pour le textarea de saisie */
 .textarea-group textarea {
     width: 100%;
     height: 300px;
@@ -155,7 +170,7 @@ th {
 /* --- Page Visualisation (Tendances) --- */
 .chart-wrapper {
     position: relative;
-    height: 45vh; /* Hauteur relative à l'écran */
+    height: 45vh;
     width: 100%;
     margin-bottom: 30px;
     background: #fff;
@@ -194,7 +209,10 @@ th {
     color: #0056b3;
 }
 
-/* --- Utilitaires --- */
+/* --- Badges & Utilitaires --- */
+.badge-blue { background-color: #e7f1ff; color: #0056b3; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+.badge-green { background-color: #e6ffed; color: #1a7f37; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+
 .clearfix::after { content: ""; clear: both; display: table; }
 
 .success-message {

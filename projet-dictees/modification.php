@@ -16,7 +16,7 @@
     <div class="header">
         <h1>Modifier</h1>
     </div>
-    <!-- Succès de MAJ -->
+  
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
         <div class="success-message">
              La dictée a été mise à jour avec succès !
@@ -32,6 +32,14 @@
                     <option value="mot">Mots</option>
                     <option value="phrase">Phrases</option>
                     <option value="texte">Texte</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-version">Auteur</label>
+                <select id="filter-version">
+                    <option value="">Tous</option>
+                    <option value="Prof">Professeur</option>
+                    <option value="Eleve">Élève</option>
                 </select>
             </div>
             <div class="filter-group">
