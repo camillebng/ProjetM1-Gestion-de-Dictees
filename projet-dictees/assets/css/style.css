@@ -111,7 +111,16 @@ tbody tr:nth-child(even) {
     margin: 0 auto 20px auto;
 }
 
-/* Barre de filtres horizontale (Page Modifier) */
+/* Aligne les champs de saisie horizontalement (Page Saisie) */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-end; 
+}
+
+/* Barre de filtres (Page Modifier) */
 .filters-row {
     display: flex;
     flex-wrap: wrap;
@@ -123,24 +132,27 @@ tbody tr:nth-child(even) {
     align-items: flex-end; 
 }
 
-/* Groupe individuel (Label + Input) */
-.filter-group {
+/* Style commun pour les groupes de champs (Saisie et Filtres) */
+.form-group, .filter-group {
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-width: 110px;
+    min-width: 140px; 
 }
 
-.filter-group label {
+.form-group label, .filter-group label {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 13px;
 }
 
+.form-group input, .form-group select, 
 .filter-group input, .filter-group select {
-    padding: 6px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Style spécifique pour le textarea de saisie */
@@ -151,6 +163,8 @@ tbody tr:nth-child(even) {
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .submit-btn {
