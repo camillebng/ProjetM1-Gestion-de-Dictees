@@ -71,7 +71,11 @@ if (!$dictee) {
             <div class="textarea-group">
                 <textarea id="contenu" name="contenu"><?php echo htmlspecialchars($dictee['contenu_prof']); ?></textarea>
             </div>
-            <button type="submit" class="submit-btn">Mettre à jour</button>
+            <div class="button-group">
+               
+                <button type="button" class="cancel-btn" onclick="window.location.href='modification.php'">Annuler</button>
+                <button type="submit" class="submit-btn">Mettre à jour</button>
+            </div>
         </form>
     </div>
 </body>

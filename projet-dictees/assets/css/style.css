@@ -109,19 +109,11 @@ tbody tr:nth-child(even) {
     width: 80%;
     max-width: 900px;
     margin: 0 auto 20px auto;
+    justify-content: space-between;
 }
 
-/* Aligne les champs de saisie horizontalement (Page Saisie) */
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-    align-items: flex-end; 
-}
-
-/* Barre de filtres (Page Modifier) */
-.filters-row {
+/* Barre de filtres horizontale (Page Modifier) */
+.filters-row, .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -129,30 +121,39 @@ tbody tr:nth-child(even) {
     padding: 15px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
-    align-items: flex-end; 
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
-/* Style commun pour les groupes de champs (Saisie et Filtres) */
-.form-group, .filter-group {
-    display: flex;
-    flex-direction: column;
+/* Groupe individuel (Label + Input) */
+.filter-group, .form-group {
+    display: grid;
+    place-items: center; /* Centre à la fois horizontalement et verticalement */
     flex: 1;
-    min-width: 140px; 
+    min-width: 150px;
 }
 
-.form-group label, .filter-group label {
+/* Style des champs */
+.filter-group input,
+.filter-group select,
+.form-group input,
+.form-group select {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 5px; /* Espace entre le label et le champ */
+}
+
+.filter-group label {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 13px;
+    
 }
 
-.form-group input, .form-group select, 
 .filter-group input, .filter-group select {
-    padding: 8px;
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 /* Style spécifique pour le textarea de saisie */
@@ -163,22 +164,33 @@ tbody tr:nth-child(even) {
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
 }
 
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
 .submit-btn {
-    background-color: #0056b3; 
+    background-color: #0003ad; 
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
 }
-
-.submit-btn:hover {
-    background-color: #004494;
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.submit-btn:hover, .cancel-btn:hover {
+    opacity: 0.8;
 }
 
 /* --- Page Visualisation (Tendances) --- */
