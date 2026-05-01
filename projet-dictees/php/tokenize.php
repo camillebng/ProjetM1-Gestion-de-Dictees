@@ -2,7 +2,8 @@
 // Fonction de tokénisation (pure)
 function tokenize_text($text) {
     if (empty($text)) return [];
-    preg_match_all("/[\w\-]+'?/u", $text, $matches);
+    // Modification technique : utilisation de \p{L} et /u pour capturer correctement tous les accents
+    preg_match_all("/[\p{L}0-9\-]+'?/u", $text, $matches);
     return $matches[0] ?? [];
 }
 
@@ -13,7 +14,7 @@ function executer_tokenisation($pdo, $id, $type_auteur) {
         if ($type_auteur === 'prof') {
             $sql_delete = "DELETE FROM toks_prof WHERE id_dict_fk = ?";
         } else {
-            $sql_delete = "DELETE FROM toks_eleves WHERE id_dict_fk = ?";
+            $sql_delete = "DELETE FROM toks_eleve WHERE id_dict_fk = (SELECT dict_fk FROM version_eleve WHERE id_dict_eleve = ?)";
         }
         $statement_delete = $pdo->prepare($sql_delete);
         $statement_delete->execute([$id]);
@@ -46,10 +47,11 @@ function executer_tokenisation($pdo, $id, $type_auteur) {
                 }
 
                 // Comparaison immédiate des tokens (correct ou non)
+                // Modification technique : ajout de BINARY pour rendre la comparaison sensible aux accents
                 $sql_compare = "
                     UPDATE toks_eleve e
                     INNER JOIN toks_prof p ON e.id_dict_fk = p.id_dict_fk AND e.position_eleve = p.position_prof
-                    SET e.est_correct = (CASE WHEN e.tok_eleve = p.tok_prof THEN 1 ELSE 0 END)
+                    SET e.est_correct = (CASE WHEN BINARY e.tok_eleve = BINARY p.tok_prof THEN 1 ELSE 0 END)
                     WHERE e.id_dict_fk = ?";
                 $pdo->prepare($sql_compare)->execute([$dict_fk]);
 

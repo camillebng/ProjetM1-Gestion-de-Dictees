@@ -39,7 +39,7 @@ try {
 
 
         <div class="actions-grid">
-            <div class="action-card" onclick="window.location.href='saisie.html';" style="cursor: pointer;">
+            <div class="action-card" onclick="window.location.href='saisie.php';" style="cursor: pointer;">
                 <span class="action-icon">➕</span>
                 <h3>Enregistrer une Nouvelle Dictée</h3>
                 <p>Enregistrez une dictée pour votre classe.</p>
@@ -49,7 +49,7 @@ try {
                 <h3>Consulter l'Historique</h3>
                 <p>Consultez et recherchez des dictées passées.</p>
             </div>
-            <div class="action-card" onclick="window.location.href='visualisation.html';" style="cursor: pointer;">
+            <div class="action-card" onclick="window.location.href='visualisation.php';" style="cursor: pointer;">
                 <span class="action-icon">📈</span>
                 <h3>Visualiser les Tendances</h3>
                 <p>Analysez les progrès de la classe.</p>
