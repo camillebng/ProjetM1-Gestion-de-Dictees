@@ -71,6 +71,10 @@
                 <h3>Note Max / Min</h3>
                 <div class="value" id="stat-range">-</div>
             </div>
+            <div class="stat-card">
+                <h3>Top 3 Erreurs</h3>
+                <div class="value" id="stat-errors" style="font-size: 1.1rem; line-height: 1.2;">-</div>
+            </div>
         </div>
     </div>
 
@@ -79,7 +83,6 @@
         const ctx = document.getElementById('trendChart').getContext('2d');
         let trendChart;
 
-        // Fonction pour mettre à jour les stats
         function updateStats() {
             const type = document.getElementById('type').value;
             const niveau = document.getElementById('niveau').value;
@@ -88,17 +91,39 @@
             fetch(`php/get_stats.php?type=${type}&niveau=${niveau}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Mise à jour des cartes
+                    // 1. Mise à jour des cartes classiques
                     document.getElementById('stat-moyenne').textContent = data.summary.moyenne ? parseFloat(data.summary.moyenne).toFixed(2) + "/20" : "N/A";
                     document.getElementById('stat-count').textContent = data.summary.nb_dictées || 0;
                     document.getElementById('stat-range').textContent = data.summary.note_max ? 
                         `${parseFloat(data.summary.note_max).toFixed(1)} / ${parseFloat(data.summary.note_min).toFixed(1)}` : "N/A";
 
-                    // Mise à jour du graphique
+                    // 2. Mise à jour de la carte des 3 erreurs les plus fréquentes
+                    const errorDiv = document.getElementById('stat-errors');
+                    if (data.top_errors && data.top_errors.length > 0) {
+                        const labelsFr = {
+                            'NOUN': 'Noms', 'VERB': 'Verbes', 'ADJ': 'Adjectifs',
+                            'DET': 'Déterminants', 'ADV': 'Adverbes', 'PRON': 'Pronoms',
+                            'PROPN': 'Noms Propres', 'ADP': 'Prépositions', 'AUX': 'Auxiliaires',
+                            'CONJ': 'Conjonctions', 'SCONJ': 'Conjonctions de sub.', 'NUM': 'Nombres'
+                        };
+
+                        let html = '<ul style="list-style: none; padding: 0; margin: 0; text-align: left; display: inline-block;">';
+                        data.top_errors.forEach((item, index) => {
+                            // Si le tag n'est pas dans le dico, on affiche le tag brut entre parenthèses
+                            const label = labelsFr[item.pos_tok] || `Autre (${item.pos_tok})`;
+                            html += `<li>${index + 1}. <strong>${label}</strong> (${item.nb_erreurs})</li>`;
+                        });
+                        html += '</ul>';
+                        errorDiv.innerHTML = html;
+                    } else {
+                        errorDiv.textContent = "Aucune erreur";
+                    }
+
+                    // 3. Mise à jour du graphique
                     const labels = data.chart.map(d => d.date);
                     const scores = data.chart.map(d => d.moy_jour);
 
-                    if (trendChart) trendChart.destroy(); // On détruit l'ancien pour recréer le nouveau
+                    if (trendChart) trendChart.destroy();
 
                     trendChart = new Chart(ctx, {
                         type: 'line',
@@ -122,12 +147,10 @@
                 });
         }
 
-        // Écouteurs d'événements sur le formulaire
         document.getElementById('type').addEventListener('change', updateStats);
         document.getElementById('niveau').addEventListener('change', updateStats);
         document.getElementById('date').addEventListener('change', updateStats);
 
-        // Chargement initial
         updateStats();
     });
     </script>

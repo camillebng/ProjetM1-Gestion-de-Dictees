@@ -1,0 +1,12 @@
+Commande : C:\Users\cbeno\AppData\Local\Microsoft\WindowsApps\python.exe "C:\xampp\htdocs\ProjetM1-Gestion-de-Dictees\projet-dictees\php/../scripts/pos_tagging.py" "5" "eleve" 2>&1
+Retour : Traceback (most recent call last):
+  File "C:\xampp\htdocs\ProjetM1-Gestion-de-Dictees\projet-dictees\php/../scripts/pos_tagging.py", line 3, in <module>
+    import mysql.connector
+ModuleNotFoundError: No module named 'mysql'
+
+Commande : C:\Users\cbeno\AppData\Local\Microsoft\WindowsApps\python.exe "C:\xampp\htdocs\ProjetM1-Gestion-de-Dictees\projet-dictees\php/../scripts/pos_tagging.py" "6" "eleve" 2>&1
+Retour : 
+Commande : C:\Users\cbeno\AppData\Local\Microsoft\WindowsApps\python.exe "C:\xampp\htdocs\ProjetM1-Gestion-de-Dictees\projet-dictees\php/../scripts/pos_tagging.py" "7" "eleve" 2>&1
+Retour : 
+Commande : C:\Users\cbeno\AppData\Local\Microsoft\WindowsApps\python.exe "C:\xampp\htdocs\ProjetM1-Gestion-de-Dictees\projet-dictees\php/../scripts/pos_tagging.py" "8" "eleve" 2>&1
+Retour : 

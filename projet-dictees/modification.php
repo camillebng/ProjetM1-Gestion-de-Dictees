@@ -82,7 +82,7 @@
                         data-niveau="<?php echo htmlspecialchars($dictee['niveau']); ?>"
                         data-titre="<?php echo strtolower(htmlspecialchars($dictee['titre'])); ?>"
                         data-version="<?php echo htmlspecialchars($dictee['version']); ?>"
-                        data-date="<?php echo $dictee['date_tri']; ?>"> <!-- Ajout de cet attribut -->
+                        data-date="<?php echo $dictee['date_tri']; ?>"> 
                     
                     <td><strong><?php echo htmlspecialchars($dictee['titre']); ?></strong></td>
                     <td><?php echo htmlspecialchars($dictee['type']); ?></td>
@@ -100,7 +100,7 @@
                         ?>
                     </td>
                     <td>
-                        <a href="detail_modif.php?id=<?php echo $dictee['id_dict']; ?>" class="edit-btn">Modifier</a>
+                        <a href="detail_modif.php?id=<?php echo $dictee['id_dict']; ?>&version=<?php echo $dictee['version']; ?>" class="edit-btn">Modifier</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
