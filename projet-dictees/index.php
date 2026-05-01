@@ -22,7 +22,7 @@ try {
 <body>
     <div class="nav-menu">
         <a href="index.php">Accueil</a> | 
-        <a href="saisie.html">Saisie</a> | 
+        <a href="saisie.php">Saisie</a> | 
         <a href="modification.php">Modifier</a> | 
         <a href="visualisation.php">Tendances</a>
     </div>
